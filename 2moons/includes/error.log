@@ -1,0 +1,236 @@
+[08-May-2014 11:47:31] USER ERROR: "SQL Error: Unknown column 'u.user_hostname' in 'field list'Query Code: UPDATE uni1_users u, uni1_session s SET 
+		u.onlinetime = 1399560451,
+		s.lastonline = 1399560451,
+		u.user_lastip = '181.41.197.123',
+		u.user_hostname = '181.41.197.123',
+		s.userIP = '181.41.197.123'
+		WHERE
+		sessionID = '7b110623a763d5ebf8c6b0b31dd2daf8' AND u.id = s.userID;"
+File: /home/stell530/public_html/2moons/includes/classes/class.Database.php | Line: 80
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/classes/class.Session.php(150): Database-&gt;query('UPDATE uni1_use...')
+#1 /includes/common.php(120): Session-&gt;updateSession()
+#2 /game.php(35): require('/home/stell530/...')
+#3 {main}
+[08-May-2014 15:39:58] USER ERROR: "SQL Error: Unknown column 'u.user_hostname' in 'field list'Query Code: UPDATE uni1_users u, uni1_session s SET 
+		u.onlinetime = 1399574398,
+		s.lastonline = 1399574398,
+		u.user_lastip = '179.190.151.158',
+		u.user_hostname = '179-190-151-158.cable.cabotelecom.com.br',
+		s.userIP = '179.190.151.158'
+		WHERE
+		sessionID = 'ae94e50fa77ea554994b113f79325c10' AND u.id = s.userID;"
+File: /home/stell530/public_html/2moons/includes/classes/class.Database.php | Line: 80
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/classes/class.Session.php(150): Database-&gt;query('UPDATE uni1_use...')
+#1 /includes/common.php(120): Session-&gt;updateSession()
+#2 /game.php(35): require('/home/stell530/...')
+#3 {main}
+[08-May-2014 15:41:47] USER ERROR: "Syntax Error in template &quot;/home/stell530/public_html/2moons/styles/templates/game/main.navigation.tpl&quot;  on line 19 &quot;&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;?page=achievement&amp;quot;  style=&amp;quot;color:purple&amp;quot;&amp;gt;{lang}lm_achievements{/lang}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&quot; unknown tag &quot;lang&quot;"
+File: /home/stell530/public_html/2moons/includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php | Line: 665
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(451): Smarty_Internal_TemplateCompilerBase-&gt;trigger_template_error('unknown tag &quot;la...', 19)
+#1 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(2393): Smarty_Internal_TemplateCompilerBase-&gt;compileTag('lang', Array)
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3101): Smarty_Internal_Templateparser-&gt;yy_r37()
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3201): Smarty_Internal_Templateparser-&gt;yy_reduce(37)
+#4 /includes/libs/Smarty/sysplugins/smarty_internal_smartytemplatecompiler.php(105): Smarty_Internal_Templateparser-&gt;doParse(10, 'lm_achievements')
+#5 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(200): Smarty_Internal_SmartyTemplateCompiler-&gt;doCompile('&lt;div id=&quot;leftme...')
+#6 /includes/libs/Smarty/sysplugins/smarty_internal_compile_include.php(146): Smarty_Internal_TemplateCompilerBase-&gt;compileTemplate(Object(Smarty_Internal_Template))
+#7 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(483): Smarty_Internal_Compile_Include-&gt;compile(Array, Object(Smarty_Internal_SmartyTemplateCompiler), Array, NULL, NULL)
+#8 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(257): Smarty_Internal_TemplateCompilerBase-&gt;callTagCompiler('include', Array, Array)
+#9 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(2388): Smarty_Internal_TemplateCompilerBase-&gt;compileTag('include', Array)
+#10 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3101): Smarty_Internal_Templateparser-&gt;yy_r36()
+#11 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3201): Smarty_Internal_Templateparser-&gt;yy_reduce(36)
+#12 /includes/libs/Smarty/sysplugins/smarty_internal_smartytemplatecompiler.php(105): Smarty_Internal_Templateparser-&gt;doParse(10, '??')
+#13 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(200): Smarty_Internal_SmartyTemplateCompiler-&gt;doCompile('{include file=&quot;...')
+#14 /includes/libs/Smarty/sysplugins/smarty_internal_template.php(187): Smarty_Internal_TemplateCompilerBase-&gt;compileTemplate(Object(Smarty_Internal_Template))
+#15 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(164): Smarty_Internal_Template-&gt;compileTemplateSource()
+#16 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....', NULL, NULL, NULL, true)
+#17 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#18 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('extends:layout....')
+#19 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display('page.overview.d...')
+#20 /game.php(65): ShowOverviewPage-&gt;show()
+#21 {main}
+[08-May-2014 15:43:24] NOTICE: "Undefined index:  query717"
+File: /home/stell530/public_html/2moons/cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php | Line: 642
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(642): errorHandler(Object(Smarty_Internal_Template))
+#1 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(74): content_536bd04d1b4921_63661403(Object(Smarty_Internal_Template))
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(180): content_536b71a2700dd4_93531715('extends:layout....', NULL, NULL, NULL, true)
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....')
+#4 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#5 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('page.overview.d...')
+#6 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#7 /game.php(65): ShowOverviewPage-&gt;show()
+#8 {main}
+[08-May-2014 15:44:20] USER ERROR: "Syntax Error in template &quot;/home/stell530/public_html/2moons/styles/templates/game/main.navigation.tpl&quot;  on line 23 &quot;/*{if $query717 &amp;gt; 0}*/&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;?page=trafegoally&amp;quot; style=&amp;quot;color:blue&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;background-color:red; font-weight:bold&amp;quot;&amp;gt;Trafego da Alian&Atilde;&sect;a&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;/*{/if}{if $query717 == 0*/}&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;?page=trafegoally&amp;quot; style=&amp;quot;color:blue&amp;quot;&amp;gt;Trafego da Alian&Atilde;&sect;a&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;/*{/if}*/&quot;  - Unexpected &quot;/&quot;"
+File: /home/stell530/public_html/2moons/includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php | Line: 665
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3144): Smarty_Internal_TemplateCompilerBase-&gt;trigger_template_error()
+#1 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3209): Smarty_Internal_Templateparser-&gt;yy_syntax_error(40, '/')
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_smartytemplatecompiler.php(105): Smarty_Internal_Templateparser-&gt;doParse(40, '/')
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(200): Smarty_Internal_SmartyTemplateCompiler-&gt;doCompile('&lt;div id=&quot;leftme...')
+#4 /includes/libs/Smarty/sysplugins/smarty_internal_compile_include.php(146): Smarty_Internal_TemplateCompilerBase-&gt;compileTemplate(Object(Smarty_Internal_Template))
+#5 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(483): Smarty_Internal_Compile_Include-&gt;compile(Array, Object(Smarty_Internal_SmartyTemplateCompiler), Array, NULL, NULL)
+#6 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(257): Smarty_Internal_TemplateCompilerBase-&gt;callTagCompiler('include', Array, Array)
+#7 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(2388): Smarty_Internal_TemplateCompilerBase-&gt;compileTag('include', Array)
+#8 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3101): Smarty_Internal_Templateparser-&gt;yy_r36()
+#9 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3201): Smarty_Internal_Templateparser-&gt;yy_reduce(36)
+#10 /includes/libs/Smarty/sysplugins/smarty_internal_smartytemplatecompiler.php(105): Smarty_Internal_Templateparser-&gt;doParse(10, '??')
+#11 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(200): Smarty_Internal_SmartyTemplateCompiler-&gt;doCompile('{include file=&quot;...')
+#12 /includes/libs/Smarty/sysplugins/smarty_internal_template.php(187): Smarty_Internal_TemplateCompilerBase-&gt;compileTemplate(Object(Smarty_Internal_Template))
+#13 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(164): Smarty_Internal_Template-&gt;compileTemplateSource()
+#14 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....', NULL, NULL, NULL, true)
+#15 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#16 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('extends:layout....')
+#17 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display('page.overview.d...')
+#18 /game.php(65): ShowOverviewPage-&gt;show()
+#19 {main}
+[08-May-2014 15:45:30] NOTICE: "Undefined index:  query717"
+File: /home/stell530/public_html/2moons/cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php | Line: 642
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(642): errorHandler(Object(Smarty_Internal_Template))
+#1 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(74): content_536bd0cb5e4231_76717839(Object(Smarty_Internal_Template))
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(180): content_536b71a2700dd4_93531715('extends:layout....', NULL, NULL, NULL, true)
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....')
+#4 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#5 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('page.overview.d...')
+#6 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#7 /game.php(65): ShowOverviewPage-&gt;show()
+#8 {main}
+[08-May-2014 15:46:12] NOTICE: "Undefined index:  query717"
+File: /home/stell530/public_html/2moons/cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php | Line: 642
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(642): errorHandler(Object(Smarty_Internal_Template))
+#1 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(74): content_536bd0f5308c67_50034788(Object(Smarty_Internal_Template))
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(180): content_536b71a2700dd4_93531715('extends:layout....', NULL, NULL, NULL, true)
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....')
+#4 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#5 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('page.overview.d...')
+#6 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#7 /game.php(65): ShowOverviewPage-&gt;show()
+#8 {main}
+[08-May-2014 15:47:00] USER ERROR: "Syntax Error in template &quot;/home/stell530/public_html/2moons/styles/templates/game/main.navigation.tpl&quot;  on line 23 &quot;{/*if $query717 &amp;gt; 0*/}&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;?page=trafegoally&amp;quot; style=&amp;quot;color:blue&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;background-color:red; font-weight:bold&amp;quot;&amp;gt;Trafego da Alian&Atilde;&sect;a&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;{/*/if}{if $query717 == 0*/}&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;?page=trafegoally&amp;quot; style=&amp;quot;color:blue&amp;quot;&amp;gt;Trafego da Alian&Atilde;&sect;a&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;{/*/if*/}&quot;  - Unexpected &quot;*&quot;, expected one of: &quot;identifier&quot;"
+File: /home/stell530/public_html/2moons/includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php | Line: 665
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3144): Smarty_Internal_TemplateCompilerBase-&gt;trigger_template_error()
+#1 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3209): Smarty_Internal_Templateparser-&gt;yy_syntax_error(40, '*')
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_smartytemplatecompiler.php(105): Smarty_Internal_Templateparser-&gt;doParse(40, '*')
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(200): Smarty_Internal_SmartyTemplateCompiler-&gt;doCompile('&lt;div id=&quot;leftme...')
+#4 /includes/libs/Smarty/sysplugins/smarty_internal_compile_include.php(146): Smarty_Internal_TemplateCompilerBase-&gt;compileTemplate(Object(Smarty_Internal_Template))
+#5 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(483): Smarty_Internal_Compile_Include-&gt;compile(Array, Object(Smarty_Internal_SmartyTemplateCompiler), Array, NULL, NULL)
+#6 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(257): Smarty_Internal_TemplateCompilerBase-&gt;callTagCompiler('include', Array, Array)
+#7 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(2388): Smarty_Internal_TemplateCompilerBase-&gt;compileTag('include', Array)
+#8 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3101): Smarty_Internal_Templateparser-&gt;yy_r36()
+#9 /includes/libs/Smarty/sysplugins/smarty_internal_templateparser.php(3201): Smarty_Internal_Templateparser-&gt;yy_reduce(36)
+#10 /includes/libs/Smarty/sysplugins/smarty_internal_smartytemplatecompiler.php(105): Smarty_Internal_Templateparser-&gt;doParse(10, '??')
+#11 /includes/libs/Smarty/sysplugins/smarty_internal_templatecompilerbase.php(200): Smarty_Internal_SmartyTemplateCompiler-&gt;doCompile('{include file=&quot;...')
+#12 /includes/libs/Smarty/sysplugins/smarty_internal_template.php(187): Smarty_Internal_TemplateCompilerBase-&gt;compileTemplate(Object(Smarty_Internal_Template))
+#13 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(164): Smarty_Internal_Template-&gt;compileTemplateSource()
+#14 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....', NULL, NULL, NULL, true)
+#15 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#16 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('extends:layout....')
+#17 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display('page.overview.d...')
+#18 /game.php(65): ShowOverviewPage-&gt;show()
+#19 {main}
+[08-May-2014 15:47:40] NOTICE: "Undefined index:  af_lastpostaction2"
+File: /home/stell530/public_html/2moons/cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php | Line: 643
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(643): errorHandler(Object(Smarty_Internal_Template))
+#1 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(74): content_536bd14cb7c916_49025999(Object(Smarty_Internal_Template))
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(180): content_536b71a2700dd4_93531715('extends:layout....', NULL, NULL, NULL, true)
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....')
+#4 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#5 /includes/pages/game/class.AbstractPage.php(246): template-&gt;display('page.overview.d...')
+#6 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#7 /game.php(65): ShowOverviewPage-&gt;show()
+#8 {main}
+[08-May-2014 15:53:12] PHP Fatal error:  Call to a member function query() on a non-object in /home/stell530/public_html/2moons/includes/pages/game/class.AbstractPage.php on line 190
+[08-May-2014 15:54:28] PHP Fatal error:  Call to a member function query() on a non-object in /home/stell530/public_html/2moons/includes/pages/game/class.AbstractPage.php on line 147
+[08-May-2014 15:59:54] PHP Fatal error:  Call to a member function fetch_array() on a non-object in /home/stell530/public_html/2moons/includes/pages/game/class.AbstractPage.php on line 190
+[08-May-2014 16:00:33] USER ERROR: "SQL Error: Unknown column 'fleet_ally' in 'where clause'Query Code: SELECT COUNT(*) FROM uni1_fleets WHERE `fleeT_universe` = '1' AND `fleet_ally` = '0' AND `fleet_mission` = '1' AND `fleet_start_time` > '1399575633'"
+File: /home/stell530/public_html/2moons/includes/classes/class.Database.php | Line: 80
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/classes/class.Database.php(112): Database-&gt;query('SELECT COUNT(*)...')
+#1 /includes/pages/game/class.AbstractPage.php(167): Database-&gt;countquery('SELECT COUNT(*)...')
+#2 /includes/pages/game/class.AbstractPage.php(197): AbstractPage-&gt;getNavigationData()
+#3 /includes/pages/game/class.AbstractPage.php(259): AbstractPage-&gt;getPageData()
+#4 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display('page.overview.d...')
+#5 /game.php(65): ShowOverviewPage-&gt;show()
+#6 {main}
+[08-May-2014 16:02:02] NOTICE: "Undefined variable: af_lastpostaction2"
+File: /home/stell530/public_html/2moons/includes/pages/game/class.AbstractPage.php | Line: 175
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/pages/game/class.AbstractPage.php(175): errorHandler()
+#1 /includes/pages/game/class.AbstractPage.php(197): AbstractPage-&gt;getNavigationData()
+#2 /includes/pages/game/class.AbstractPage.php(259): AbstractPage-&gt;getPageData('page.overview.d...')
+#3 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#4 /game.php(65): ShowOverviewPage-&gt;show()
+#5 {main}
+[08-May-2014 16:03:09] NOTICE: "Undefined variable: af_lastpostaction2"
+File: /home/stell530/public_html/2moons/includes/pages/game/class.AbstractPage.php | Line: 177
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /includes/pages/game/class.AbstractPage.php(177): errorHandler()
+#1 /includes/pages/game/class.AbstractPage.php(199): AbstractPage-&gt;getNavigationData()
+#2 /includes/pages/game/class.AbstractPage.php(261): AbstractPage-&gt;getPageData('page.overview.d...')
+#3 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#4 /game.php(65): ShowOverviewPage-&gt;show()
+#5 {main}
+[08-May-2014 16:05:52] NOTICE: "Undefined index:  query717"
+File: /home/stell530/public_html/2moons/cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php | Line: 642
+URL: http://2moons.stellarwars.net/game.php | Version: 1.7.2676
+Stack trace:
+#0 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(642): errorHandler(Object(Smarty_Internal_Template))
+#1 /cache/pt^5396c49dd03d0200eeaad75f05855d90bb8ca860.extends.page.overview.default.tpl.cache.php(74): content_536bd590bfe962_72646313(Object(Smarty_Internal_Template))
+#2 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(180): content_536b71a2700dd4_93531715('extends:layout....', NULL, NULL, NULL, true)
+#3 /includes/libs/Smarty/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase-&gt;fetch('extends:layout....')
+#4 /includes/classes/class.template.php(142): Smarty_Internal_TemplateBase-&gt;display('extends:layout....')
+#5 /includes/pages/game/class.AbstractPage.php(270): template-&gt;display('page.overview.d...')
+#6 /includes/pages/game/class.ShowOverviewPage.php(273): AbstractPage-&gt;display()
+#7 /game.php(65): ShowOverviewPage-&gt;show()
+#8 {main}
+[08-May-2014 16:07:23] PHP Fatal error:  Call to undefined function  request_var() in /home/stell530/public_html/2moons/includes/pages/game/class.ShowForumPage.php on line 34
+[08-May-2014 16:08:30] PHP Fatal error:  Call to undefined function  request_var() in /home/stell530/public_html/2moons/includes/pages/game/class.ShowTutorialPage.php on line 24
+[08-May-2014 16:09:39] PHP Fatal error:  Call to undefined function  request_var() in /home/stell530/public_html/2moons/includes/pages/game/class.ShowAforumPage.php on line 34
+[08-May-2014 16:27:19] WARNING: "Cannot modify header information - headers already sent by (output started at /home/stell530/public_html/2moons/includes/pages/game/class.ShowBuildingsPage.php:1)"
+File: /home/stell530/public_html/2moons/includes/classes/HTTP.class.php | Line: 46
+URL: http://2moons.stellarwars.net/game.php?page=buildings | Version: 1.7.2676
+Stack trace:
+#0 /includes/classes/HTTP.class.php(46): errorHandler('Location: http:...')
+#1 /includes/classes/HTTP.class.php(39): HTTP::sendHeader('Location', 'http://2moons.s...')
+#2 /includes/pages/game/class.AbstractPage.php(290): HTTP::redirectTo('game.php?page=b...')
+#3 /includes/pages/game/class.ShowBuildingsPage.php(311): AbstractPage-&gt;redirectTo('game.php?page=b...')
+#4 /game.php(65): ShowBuildingsPage-&gt;show()
+#5 {main}
+[08-May-2014 16:27:48] WARNING: "Cannot modify header information - headers already sent by (output started at /home/stell530/public_html/2moons/includes/pages/game/class.ShowBuildingsPage.php:1)"
+File: /home/stell530/public_html/2moons/includes/classes/HTTP.class.php | Line: 46
+URL: http://2moons.stellarwars.net/game.php?page=buildings | Version: 1.7.2676
+Stack trace:
+#0 /includes/classes/HTTP.class.php(46): errorHandler('Location: http:...')
+#1 /includes/classes/HTTP.class.php(39): HTTP::sendHeader('Location', 'http://2moons.s...')
+#2 /includes/pages/game/class.AbstractPage.php(290): HTTP::redirectTo('game.php?page=b...')
+#3 /includes/pages/game/class.ShowBuildingsPage.php(311): AbstractPage-&gt;redirectTo('game.php?page=b...')
+#4 /game.php(65): ShowBuildingsPage-&gt;show()
+#5 {main}
+[08-May-2014 16:27:56] WARNING: "Cannot modify header information - headers already sent by (output started at /home/stell530/public_html/2moons/includes/pages/game/class.ShowBuildingsPage.php:1)"
+File: /home/stell530/public_html/2moons/includes/classes/HTTP.class.php | Line: 46
+URL: http://2moons.stellarwars.net/game.php?page=buildings | Version: 1.7.2676
+Stack trace:
+#0 /includes/classes/HTTP.class.php(46): errorHandler('Location: http:...')
+#1 /includes/classes/HTTP.class.php(39): HTTP::sendHeader('Location', 'http://2moons.s...')
+#2 /includes/pages/game/class.AbstractPage.php(290): HTTP::redirectTo('game.php?page=b...')
+#3 /includes/pages/game/class.ShowBuildingsPage.php(311): AbstractPage-&gt;redirectTo('game.php?page=b...')
+#4 /game.php(65): ShowBuildingsPage-&gt;show()
+#5 {main}

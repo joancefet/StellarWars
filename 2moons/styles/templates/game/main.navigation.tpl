@@ -16,7 +16,7 @@
 		{if isModulAvalible($smarty.const.MODULE_RESSOURCE_LIST)}<li><a href="game.php?page=resources">{$LNG.lm_resources}</a></li>{/if}
 		<li><a href="?page=bank">Banco VIP</a></li>
 		<li><a href="?page=tutorial" style="color:green">Tutorial</a></li>
-		<li><a href="?page=achievement"  style="color:purple">{lang}lm_achievements{/lang}</a></li>
+		<li><a href="?page=achievements"  style="color:purple">{$LNG.lm_achievements}</a></li>
 		<li class="menucat2-head"></li>
 		{if isModulAvalible($smarty.const.MODULE_GALAXY)}<li><a href="game.php?page=galaxy">{$LNG.lm_galaxy}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_ALLIANCE)}<li><a href="game.php?page=alliance">{$LNG.lm_alliance}</a></li>{/if}
