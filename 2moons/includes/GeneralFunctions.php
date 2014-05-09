@@ -387,6 +387,38 @@ function pretty_number($n, $dec = 0)
 	return number_format(floattostring($n, $dec), $dec, ',', '.');
 }
 
+function request_var($var_name, $default, $multibyte = false, $specialtype = '')
+{
+	if(!isset($_REQUEST[$var_name]))
+		return $default;
+	
+	$var	= $_REQUEST[$var_name];
+	$type	= gettype($default);
+	settype($var, $type);
+	if ($type == 'string')
+	{
+		$var = trim(htmlspecialchars(str_replace(array("\r\n", "\r", "\0"), array("\n", "\n", ''), $var), ENT_COMPAT, 'UTF-8'));
+
+		if (!empty($var))
+		{
+			// Make sure multibyte characters are wellformed
+			if ($multibyte)
+			{
+				if (!preg_match('/^./u', $var))
+				{
+					$var = '';
+				}
+			}
+			else
+			{
+				// no multibyte, allow only ASCII (0-127)
+				$var = preg_replace('/[\x80-\xFF]/', '?', $var);
+			}
+		}
+	}
+	return $var;
+}
+
 function GetUserByID($UserID, $GetInfo = "*")
 {
 	if(is_array($GetInfo)) {

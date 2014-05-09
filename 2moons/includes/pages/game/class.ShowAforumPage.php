@@ -2,7 +2,7 @@
 
 /**
  *  2Moons
- *  Copyright (C) 2011  Slaver
+ *  Copyright (C) 2012 Jan Kröpke
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,219 +18,128 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @package 2Moons
- * @author Slaver <slaver7@gmail.com>
- * @copyright 2009 Lucky <lucky@xgproyect.net> (XGProyecto)
- * @copyright 2011 Slaver <slaver7@gmail.com> (Fork/2Moons)
+ * @author Jan Kröpke <info@2moons.cc>
+ * @copyright 2012 Jan Kröpke <info@2moons.cc>
  * @license http://www.gnu.org/licenses/gpl.html GNU GPLv3 License
- * @version 1.4 (2011-07-10)
- * @info $Id: ShowSupportPage.php 1913 2011-07-10 18:13:22Z slaver7 $
- * @link http://code.google.com/p/2moons/
+ * @version 1.7.3 (2013-05-19)
+ * @info $Id: class.ShowTicketPage.php 2660 2013-04-01 18:39:13Z slaver7 $
+ * @link http://2moons.cc/
  */
 
-class ShowAforumPage 
+class ShowAforumPage extends AbstractPage 
 {
-	public function ShowAforumPage()
+	public static $requireModule = MODULE_SUPPORT;
+
+	private $ticketObj;
+	
+	function __construct() 
 	{
-		$action 		= request_var('action', "");
-		$id 			= request_var('id', 0);
-		
-		$PlanetRess = new ResourceUpdate();
-		$PlanetRess->CalcResource();
-		$PlanetRess->SavePlanetToDB();
-		
-		switch($action){
-			case 'newticket':
-				$this->CreateTopic();
-			break;
-			case 'send':
-				$this->UpdateTopic($id);
-			break;
-			case 'open':
-				$this->OpenTopic($id);
-			break;
-			case 'close':
-				$this->CloseTopic($id);
-			break;
-			case 'delete':
-				$this->DeleteTopic($id);
-			break;
-			default:
-				$this->ShowAforumTopics();
-			break;
-		}
+		parent::__construct();
+		require('includes/classes/class.Aforum.php');
+		$this->ticketObj	= new Aforum;
 	}
-
-	private function CreateTopic()
+	
+	public function show()
 	{
-		global $USER, $UNI, $db, $LNG;
+		global $USER, $LNG;
+				
+		$ticketResult	= $GLOBALS['DATABASE']->query("SELECT t.*, COUNT(a.ticketID) as answer FROM ".AFORUM." t INNER JOIN ".AFORUM_ANSWER." a USING (ticketID) WHERE t.ownerID = ".$USER['id']." GROUP BY a.ticketID ORDER BY t.ticketID DESC;");
+		$ticketList		= array();
 		
-		$subject = request_var('subject','',true);
-		$text 	 = makebr(request_var('text','',true));
+		while($ticketRow = $GLOBALS['DATABASE']->fetch_array($ticketResult)) {
+			$ticketRow['time']	= _date($LNG['php_tdformat'], $ticketRow['time'], $USER['timezone']);
 
-		$template	= new template();
-		
-		if(empty($text) || empty($subject) || $_SESSION['aforumtoken'] != $USER['id']) {
-			$template->message($LNG['af_sendit_error_msg'], "game.php?page=aforum", 3);
-			exit;
+			$ticketList[$ticketRow['ticketID']]	= $ticketRow;
 		}
 		
-		$SQL  = "INSERT ".AFORUM." SET ";
-		$SQL .= "`player_id` = '". $USER['id'] ."',";
-		$SQL .= "`subject` = '". $db->sql_escape($subject) ."',";
-		$SQL .= "`text` = '" .$db->sql_escape($text) ."',";
-		$SQL .= "`time` = '". TIMESTAMP ."',";
-		$SQL .= "`status` = '1',";
-		$SQL .= "`universe` = '".$UNI."',";
-		$SQL .= "`ally_id` = '". $USER['ally_id'] ."';";
-		$db->query($SQL);
+		$GLOBALS['DATABASE']->free_result($ticketResult);
 		
-		$template->message($LNG['af_sendit_t'], "game.php?page=aforum", 2);
-	}
-	
-	private function UpdateTopic($TicketID) 
-	{
-		global $USER, $db, $LNG;
-		
-		$text = request_var('text','',true);
-		$template	= new template();	
-		if(empty($text) || $_SESSION['aforumtoken'] != $USER['id'])
-			exit($template->message($LNG['af_sendit_error_msg'],"game.php?page=aforum", 3));
-		
-		$ticket = $db->uniquequery("SELECT text FROM ".AFORUM." WHERE `id` = '".$TicketID."';");
-
-		$text 	= $ticket['text'].'<br><br><hr>'.sprintf($LNG['af_player_write'], $USER['username'], tz_date(TIMESTAMP)).'<br><br>'.makebr($text).'';
-		$db->query("UPDATE ".AFORUM." SET `text` = '".$db->sql_escape($text) ."', `time` = '". TIMESTAMP ."', lastpostplayer = '".$USER['username']."' WHERE `id` = '". $db->sql_escape($TicketID) ."';");
-		$template->message($LNG['af_sendit_a'],"game.php?page=aforum", 2);
-	}
-	
-	private function CloseTopic($TicketID)
-	{
-		global $USER, $db, $LNG;
-		
-		$template	= new template();
-		$ticket = $db->uniquequery("SELECT text FROM ".AFORUM." WHERE `id` = '".$TicketID."';");
-		//$newtext = $ticket['text'].'<br><br><hr>'.sprintf($LNG['sp_admin_closed'], $USER['username'], date(TDFORMAT, TIMESTAMP));
-		$SQL  = "UPDATE ".AFORUM." SET ";
-		//$SQL .= "`text` = '".$db->sql_escape($newtext)."',";
-		$SQL .= "`status` = '0'";
-		$SQL .= "WHERE ";
-		$SQL .= "`id` = '".$TicketID."' ";
-		$db->query($SQL);
-		$template->message($LNG['af_close_t'],"game.php?page=aforum", 2);
-	}
-	
-	private function DeleteTopic($TicketID)
-	{
-		global $USER, $db, $LNG;
-		
-		$template = new template();
-		$SQL .= "DELETE FROM ".AFORUM." WHERE `id` = '".$TicketID."';";
-		$db->query($SQL);
-		$template->message($LNG['af_delete_t'],"game.php?page=aforum", 2);
-	}
-	
-	private function OpenTopic($TicketID)
-	{
-		global $USER, $db, $LNG;
-		
-		$template = new template();
-		$ticket = $db->uniquequery("SELECT text FROM ".AFORUM." WHERE `id` = '".$TicketID."';");
-		//$newtext = $ticket['text'].'<br><br><hr>'.sprintf($LNG['sp_admin_closed'], $USER['username'], date(TDFORMAT, TIMESTAMP));
-		$SQL  = "UPDATE ".AFORUM." SET ";
-		//$SQL .= "`text` = '".$db->sql_escape($newtext)."',";
-		$SQL .= "`status` = '1'";
-		$SQL .= "WHERE ";
-		$SQL .= "`id` = '".$TicketID."' ";
-		$db->query($SQL);
-		$template->message($LNG['af_open_t'],"game.php?page=aforum", 2);
-	}
-	
-	private function ShowAforumTopics()
-	{
-		global $USER, $PLANET, $db, $LNG;
-		
-		if ($USER['authlevel'] >= 2) {		
-			$query			= $db->query("SELECT ID,player_id,time,text,subject,status,lastpostplayer FROM ".AFORUM." WHERE `ally_id` > '0' ORDER BY time DESC;"); 
-		} else {
-			if ($USER['ally_id'] == 0) redirectTo("game.php?page=alliance");
-			$query			= $db->query("SELECT ID,player_id,time,text,subject,status,lastpostplayer FROM ".AFORUM." WHERE `ally_id` = '".$USER['ally_id']."' ORDER BY time DESC;"); 
-		}
-		
-		$TicketsList	= array();
-		while($ticket = $db->fetch_array($query)){	
-			
-			$ticket3 = $db->uniquequery("SELECT username FROM ".USERS." WHERE `id` = '".$ticket['player_id']."';");
-			//$ticket3 = $db->fetch_array($query3);
-			$player_post = $ticket3['username'];
-			
-			if ( $USER['lastaforum'] < $ticket['time'] ) { 
-			$TicketsList[$ticket['ID']]	= array(
-				'af_status'	=> $ticket['status'],
-				'af_subject'	=> $ticket['subject'],
-				'af_date'		=> tz_date($ticket['time']),
-				'af_text'		=> html_entity_decode($ticket['text'], ENT_NOQUOTES, "UTF-8"),
-				'af_lastpostplayer'	=> $ticket['lastpostplayer'],
-				'af_lastpostaction'	=> 1,
-				'af_player_post'	=> $player_post,
-				'af_player_id'		=> $ticket['player_id'],
-				'af_user_id'		=> $USER['id'],
-			);
-			} else {
-			$TicketsList[$ticket['ID']]	= array(
-				'af_status'	=> $ticket['status'],
-				'af_subject'	=> $ticket['subject'],
-				'af_date'		=> tz_date($ticket['time']),
-				'af_text'		=> html_entity_decode($ticket['text'], ENT_NOQUOTES, "UTF-8"),
-				'af_lastpostplayer'	=> $ticket['lastpostplayer'],
-				'af_lastpostaction'	=> 0,
-				'af_player_post'	=> $player_post,
-				'af_player_id'		=> $ticket['player_id'],
-				'af_user_id'		=> $USER['id'],
-			);
-			}
-			
-		}
-		$query2	= $db->query("SELECT * FROM ".AFORUM." WHERE `ally_id` = '".$USER['ally_id']."' AND `player_id` = '".$USER['id']."';");
-		$ticket2 = $db->fetch_array($query2);
-		$aff = $ticket2['player_id'];
-		//$player_post_id = $ticket2['player_id'];
-		//$query3 = $db->query("SELECT username FROM ".USERS." WHERE `id` = '".$player_post_id."';");
-		//$ticket3 = $db->fetch_array($query3);
-		//$player_post = $ticket3['username'];
-		if ($aff == $USER['id']) { $actions = 1; } else { $actions = 0; }
-
-		
-		
-		$_SESSION['aforumtoken']	= $USER['id'];
-		$db->free_result($query);
-		$db->free_result($query2);
-		$template	= new template();
-		$template->loadscript('aforum.js');
-		
-
-		
-		$template->assign_vars(array(	
-			'TicketsList'			=> $TicketsList,
-			'af_text'					=> $LNG['af_text'],
-			'af_header'			=> $LNG['af_header'],
-			'af_ticket_id'				=> $LNG['af_ticket_id'],
-			'af_subject'				=> $LNG['af_subject'],
-			'af_status'				=> $LNG['af_status'],
-			'af_ticket_posted'			=> $LNG['af_ticket_posted'],
-			'af_send'				=> $LNG['af_send'],
-			'af_close'			=> $LNG['af_close'],
-			'af_open'				=> $LNG['af_open'],
-			'af_admin_answer'		=> $LNG['af_admin_answer'],
-			'af_player_answer'	=> $LNG['af_player_answer'],
-			'af_ticket_close'		=> $LNG['af_ticket_close'],	
-			'af_subject'				=> $LNG['af_subject'],
-			'af_status'				=> $LNG['af_status'],
-			'af_ticket_new'			=> $LNG['af_ticket_new'],
-			'actions'			=> $actions,
+		$this->tplObj->assign_vars(array(	
+			'ticketList'	=> $ticketList
 		));
 			
-		$template->show("aforum_overview.tpl");
-		$db->query("UPDATE ".USERS." SET `lastaforum` = '". TIMESTAMP ."' WHERE `id` = '".$USER['id']."';");
+		$this->display('page.aforum.default.tpl');
+	}
+	
+	function create() 
+	{
+		global $USER, $LNG;
+		
+		$categoryList	= $this->ticketObj->getCategoryList();
+		
+		$this->tplObj->assign_vars(array(	
+			'categoryList'	=> $categoryList,
+		));
+			
+		$this->display('page.aforum.create.tpl');		
+	}
+	
+	function send() 
+	{
+		global $USER, $UNI, $LNG;
+				
+		$ticketID	= HTTP::_GP('id', 0);
+		$categoryID	= HTTP::_GP('category', 0);
+		$message	= HTTP::_GP('message', '', true);
+		$subject	= HTTP::_GP('subject', '', true);
+		
+		if(empty($message)) {
+			if(empty($ticketID)) {
+				$this->redirectTo('game.php?page=aforum&mode=create');
+			} else {
+				$this->redirectTo('game.php?page=aforum&mode=view&id='.$ticketID);
+			}
+		}
+		
+		if(empty($ticketID)) {
+			if(empty($subject)) {
+				$this->printMessage($LNG['ti_error_no_subject']);
+			}
+			$ticketID	= $this->ticketObj->createTicket($USER['id'], $categoryID, $subject);
+		} else {
+			$ticketDetail	= $GLOBALS['DATABASE']->getFirstCell("SELECT status FROM ".AFORUM." WHERE ticketID = ".$ticketID.";");
+			if ($ticketDetail['status'] == 2)
+				$this->printMessage($LNG['ti_error_closed']);
+		}
+			
+		$this->ticketObj->createAnswer($ticketID, $USER['id'], $USER['username'], '', $message, 0);
+		$this->redirectTo('game.php?page=aforum&mode=view&id='.$ticketID);
+	}
+	
+	function view() 
+	{
+		global $USER, $LNG;
+		
+		require_once('includes/functions/BBCode.php');
+		
+		$ticketID			= HTTP::_GP('id', 0);
+		$answerResult		= $GLOBALS['DATABASE']->query("SELECT a.*, t.categoryID, t.status FROM ".AFORUM_ANSWER." a INNER JOIN ".AFORUM." t USING(ticketID) WHERE a.ticketID = ".$ticketID." ORDER BY a.answerID;");
+		$answerList			= array();
+
+		if($GLOBALS['DATABASE']->numRows($answerResult) == 0) {
+			$this->printMessage(sprintf($LNG['ti_not_exist'], $ticketID));
+		}
+
+		$ticket_status = 'Unknown';
+
+		while($answerRow = $GLOBALS['DATABASE']->fetch_array($answerResult)) {
+			$answerRow['time']	= _date($LNG['php_tdformat'], $answerRow['time'], $USER['timezone']);
+			$answerRow['message']	= bbcode($answerRow['message']);
+			$answerList[$answerRow['answerID']]	= $answerRow;
+			if (empty($ticket_status))
+				$ticket_status = $answerRow['status'];
+		}
+		$GLOBALS['DATABASE']->free_result($answerResult);
+			
+		$categoryList	= $this->ticketObj->getCategoryList();
+		
+		$this->tplObj->assign_vars(array(
+			'ticketID'		=> $ticketID,
+			'categoryList'	=> $categoryList,
+			'answerList'	=> $answerList,
+			'status'		=> $ticket_status,
+		));
+			
+		$this->display('page.aforum.view.tpl');		
 	}
 }
-?>

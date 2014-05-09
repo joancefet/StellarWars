@@ -79,7 +79,8 @@ define('VARS_REQUIRE'	 	, DB_PREFIX.'vars_requriements');
 // MOD-TABLES
 
 define('AFORUM'				, DB_PREFIX.'aforum');
-define('AFORUM_MSG'			, DB_PREFIX.'aforum_msgs');
+define('AFORUM_ANSWER'		, DB_PREFIX.'aforum_answer');
+define('AFORUM_CATEGORY'	, DB_PREFIX.'aforum_category');
 define('FORUM'				, DB_PREFIX.'forum');
 define('FORUM_MSG'			, DB_PREFIX.'forum_msgs');
 // MOD MSG BACKUP
