@@ -39,7 +39,11 @@ class ShowLogoutPage extends AbstractPage
 	
 	function show() 
 	{
-		global $LNG, $SESSION;
+		global $LNG, $SESSION, $USER;
+		
+		$this->tplObj->assign_vars(array(
+			'new_message' 		=> $USER['messages'],
+		));
 		
 		$SESSION->DestroySession();
 		$this->display('page.logout.default.tpl');

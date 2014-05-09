@@ -39,8 +39,8 @@
 		<li><a href="game.php?page=resBonus">Daily Resource Package</a></li>
 		<li><a href="game.php?page=lucky">Lucky 7 Days Package</a></li>
 
-		<!--<li class="menucat3-head"></li>
-		{if isModulAvalible($smarty.const.MODULE_MESSAGES)}<li><a href="game.php?page=messages">{$LNG.lm_messages}{nocache}{if $new_message > 0}<span id="newmes"> (<span id="newmesnum">{$new_message}</span>)</span>{/if}{/nocache}</a></li>{/if}
+		<li class="menucat3-head"></li>
+		<!--{if isModulAvalible($smarty.const.MODULE_MESSAGES)}<li><a href="game.php?page=messages">{$LNG.lm_messages}{nocache}{if $new_message > 0}<span id="newmes"> (<span id="newmesnum">{$new_message}</span>)</span>{/if}{/nocache}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_NOTICE)}<li><a href="javascript:OpenPopup('?page=notes', 'notes', 720, 300);">{$LNG.lm_notes}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_BUDDYLIST)}<li><a href="game.php?page=buddyList">{$LNG.lm_buddylist}</a></li>{/if}
 		<li><a href="game.php?page=settings">{$LNG.lm_options}</a></li>
