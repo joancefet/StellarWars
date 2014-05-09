@@ -33,18 +33,19 @@ class Aforum
 		
 	}
 	
-	function createTicket($ownerID, $categoryID, $subject) {
+	function createTicket($ownerID, $categoryID, $subject, $ally_id) {
 		global $UNI;
 		
-		$GLOBALS['DATABASE']->query("INSERT INTO ".AFORUM." SET ownerID = ".$ownerID.", universe = ".$UNI.", categoryID = ".$categoryID.", subject = '".$GLOBALS['DATABASE']->sql_escape($subject)."', time = ".TIMESTAMP.";");
+		$GLOBALS['DATABASE']->query("INSERT INTO ".AFORUM." SET ownerID = ".$ownerID.", universe = ".$UNI.", categoryID = ".$categoryID.", subject = '".$GLOBALS['DATABASE']->sql_escape($subject)."', time = ".TIMESTAMP.", ally_id = ".$ally_id.";");
 		
 		return $GLOBALS['DATABASE']->GetInsertID();
 	}
 	
-	function createAnswer($ticketID, $ownerID, $ownerName, $subject, $message, $status) {
+	function createAnswer($ticketID, $ownerID, $ownerName, $ally_id, $subject, $message, $status) {
 				
 		$GLOBALS['DATABASE']->query("INSERT INTO ".AFORUM_ANSWER." SET ticketID = ".$ticketID.",
-		ownerID = ".$ownerID.", 
+		ownerID = ".$ownerID.",
+		ally_id = ".$ally_id.",
 		ownerName = '".$GLOBALS['DATABASE']->sql_escape($ownerName)."', 
 		subject = '".$GLOBALS['DATABASE']->sql_escape($subject)."', 
 		message = '".$GLOBALS['DATABASE']->sql_escape($message)."', 
@@ -55,6 +56,8 @@ class Aforum
 	}
 	
 	function getCategoryList() {
+		
+		global $USER;
 				
 		$categoryResult		= $GLOBALS['DATABASE']->query("SELECT * FROM ".AFORUM_CATEGORY.";");
 		$categoryList		= array();
@@ -64,6 +67,10 @@ class Aforum
 		}
 		
 		$GLOBALS['DATABASE']->free_result($categoryResult);
+		
+		//Atualizando hora da ultima visita ao forum
+		$GLOBALS['DATABASE']->query("UPDATE ".USERS." SET lastaforum = ".TIMESTAMP." WHERE id = ".$USER['id'].";");
+		//echo "puta que merda";
 		
 		return $categoryList;
 	}

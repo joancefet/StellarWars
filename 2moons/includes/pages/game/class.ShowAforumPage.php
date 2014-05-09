@@ -37,12 +37,13 @@ class ShowAforumPage extends AbstractPage
 		parent::__construct();
 		require('includes/classes/class.Aforum.php');
 		$this->ticketObj	= new Aforum;
+		
 	}
 	
 	public function show()
 	{
 		global $USER, $LNG;
-				
+		
 		$ticketResult	= $GLOBALS['DATABASE']->query("SELECT t.*, COUNT(a.ticketID) as answer FROM ".AFORUM." t INNER JOIN ".AFORUM_ANSWER." a USING (ticketID) WHERE t.ownerID = ".$USER['id']." GROUP BY a.ticketID ORDER BY t.ticketID DESC;");
 		$ticketList		= array();
 		
@@ -59,6 +60,7 @@ class ShowAforumPage extends AbstractPage
 		));
 			
 		$this->display('page.aforum.default.tpl');
+		
 	}
 	
 	function create() 
@@ -95,14 +97,14 @@ class ShowAforumPage extends AbstractPage
 			if(empty($subject)) {
 				$this->printMessage($LNG['ti_error_no_subject']);
 			}
-			$ticketID	= $this->ticketObj->createTicket($USER['id'], $categoryID, $subject);
+			$ticketID	= $this->ticketObj->createTicket($USER['id'], $categoryID, $subject, $USER['ally_id']);
 		} else {
 			$ticketDetail	= $GLOBALS['DATABASE']->getFirstCell("SELECT status FROM ".AFORUM." WHERE ticketID = ".$ticketID.";");
 			if ($ticketDetail['status'] == 2)
 				$this->printMessage($LNG['ti_error_closed']);
 		}
 			
-		$this->ticketObj->createAnswer($ticketID, $USER['id'], $USER['username'], '', $message, 0);
+		$this->ticketObj->createAnswer($ticketID, $USER['id'], $USER['username'], $USER['ally_id'], '', $message, 0);
 		$this->redirectTo('game.php?page=aforum&mode=view&id='.$ticketID);
 	}
 	
@@ -140,6 +142,7 @@ class ShowAforumPage extends AbstractPage
 			'status'		=> $ticket_status,
 		));
 			
-		$this->display('page.aforum.view.tpl');		
+		$this->display('page.aforum.view.tpl');
+		
 	}
 }

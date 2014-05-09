@@ -20,8 +20,10 @@
 		<li class="menucat2-head"></li>
 		{if isModulAvalible($smarty.const.MODULE_GALAXY)}<li><a href="game.php?page=galaxy">{$LNG.lm_galaxy}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_ALLIANCE)}<li><a href="game.php?page=alliance">{$LNG.lm_alliance}</a></li>{/if}
-		
-		{if !empty($hasBoard)}<!--<li><a href="game.php?page=board" target="forum">{$LNG.lm_forums}</a></li>-->{/if}
+		{if $query717 > 0}<li><a href="?page=trafegoally" style="color:blue"><span style="background-color:red; font-weight:bold">Trafego da Aliança</span></a></li>{/if}{if $query717 == 0}<li><a href="?page=trafegoally" style="color:blue">Trafego da Aliança</a></li>{/if}
+		{if $af_lastpostaction2 > 0}<li><a href="?page=aforum"><span style="background-color:red; font-weight:bold">Forum Ally</span></a></li>{/if}{if $af_lastpostaction2 == 0}<li><a href="?page=aforum">Forum Ally</a></li>{/if}
+		{if $af_lastpostaction5 > 0}<li><a href="?page=forum"><span style="background-color:red; font-weight:bold">Forum Universal</span></a></li>{/if}{if $af_lastpostaction5 == 0}<li><a href="?page=forum">Forum Universal</a></li>{/if}
+        {if !empty($hasBoard)}<!--<li><a href="game.php?page=board" target="forum">{$LNG.lm_forums}</a></li>-->{/if}
 		{if isModulAvalible($smarty.const.MODULE_STATISTICS)}<li><a href="game.php?page=statistics">{$LNG.lm_statistics}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_RECORDS)}<li><a href="game.php?page=records">{$LNG.lm_records}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_BATTLEHALL)}<li><a href="game.php?page=battleHall">{$LNG.lm_topkb}</a></li>{/if}
