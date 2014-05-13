@@ -77,3 +77,6 @@ define('VARS_RAPIDFIRE'		, DB_PREFIX.'vars_rapidfire');
 define('VARS_REQUIRE'	 	, DB_PREFIX.'vars_requriements');
 
 // MOD-TABLES
+define('AFORUM'				, DB_PREFIX.'aforum');
+define('AFORUM_ANSWER'		, DB_PREFIX.'aforum_answer');
+define('AFORUM_CATEGORY'	, DB_PREFIX.'aforum_category');
