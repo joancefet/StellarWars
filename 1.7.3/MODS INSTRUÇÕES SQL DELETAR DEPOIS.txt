@@ -6,8 +6,8 @@ alter table uni1_config add modinstantbuilds int(11) not null default '1';
 
 
 //immunity mod
-alter table uni1_users add next_immunity int(11) as defined 0
-alter table uni1_users add immunity_until int(11) as defined 0
+alter table uni1_users add next_immunity int(11) not null default '0';
+alter table uni1_users add immunity_until int(11) not null default '0';
 
 
 //Achievements Mod
@@ -93,3 +93,48 @@ alter table uni1_users add immunity_until int(11) as defined 0
  ALTER TABLE uni1_users ADD achievements_lab2 int(11) NOT NULL DEFAULT '0';
  ALTER TABLE uni1_users ADD achievements_lab3 int(11) NOT NULL DEFAULT '0';
  ALTER TABLE uni1_users ADD achievements_lab4 int(11) NOT NULL DEFAULT '0';
+
+
+//Black Market Mod
+ ALTER TABLE uni1_users ADD bm_MetalMine_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_MetalMine_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_MetalMine_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_CrystalMine_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_CrystalMine_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_CrystalMine_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_DeuteriumSynthesizer_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_DeuteriumSynthesizer_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_DeuteriumSynthesizer_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_PowerPlant_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_PowerPlant_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_PowerPlant_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_University_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_University_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_University_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_NanoFactory_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_NanoFactory_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_NanoFactory_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_Terraformer_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_Terraformer_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_Terraformer_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_WeaponTech_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_WeaponTech_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_WeaponTech_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_ShieldTech_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_ShieldTech_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_ShieldTech_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_ArmorTech_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_ArmorTech_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_ArmorTech_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_HyperspaceEngine_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_HyperspaceEngine_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_HyperspaceEngine_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_MineralTech_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_MineralTech_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_MineralTech_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_SemiCrystalsTech_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_SemiCrystalsTech_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_SemiCrystalsTech_amount int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_FuelTech_price int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_FuelTech_time int(11) NOT NULL DEFAULT '0';
+ ALTER TABLE uni1_users ADD bm_FuelTech_amount int(11) NOT NULL DEFAULT '0';
