@@ -5,3 +5,9 @@ alter table uni1_config add modinstantresen int(11) not null default '1';
 alter table uni1_config add modinstantbuilds int(11) not null default '1';
 
 
+//immunity mod
+alter table uni1_users add next_immunity int(11) as defined 0
+alter table uni1_users add immunity_until int(11) as defined 0
+
+
+//
