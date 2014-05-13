@@ -1,16 +1,16 @@
-//INSTANT RESEARCH BUILDING
+###INSTANT RESEARCH BUILDING
 alter table uni1_config add modinstant int(11) not null default '1';
 alter table uni1_config add modinstantresearch int(11) not null default '1';
 alter table uni1_config add modinstantresen int(11) not null default '1';
 alter table uni1_config add modinstantbuilds int(11) not null default '1';
 
 
-//immunity mod
+###immunity mod
 alter table uni1_users add next_immunity int(11) not null default '0';
 alter table uni1_users add immunity_until int(11) not null default '0';
 
 
-//Achievements Mod
+###Achievements Mod
  ALTER TABLE uni1_config ADD achievements_mines int(11) NOT NULL DEFAULT '4';
  ALTER TABLE uni1_config ADD achievements_tech int(11) NOT NULL DEFAULT '4';
  ALTER TABLE uni1_config ADD achievements_engine int(11) NOT NULL DEFAULT '4';
@@ -95,7 +95,7 @@ alter table uni1_users add immunity_until int(11) not null default '0';
  ALTER TABLE uni1_users ADD achievements_lab4 int(11) NOT NULL DEFAULT '0';
 
 
-//Black Market Mod
+###Black Market Mod
  ALTER TABLE uni1_users ADD bm_MetalMine_price int(11) NOT NULL DEFAULT '0';
  ALTER TABLE uni1_users ADD bm_MetalMine_time int(11) NOT NULL DEFAULT '0';
  ALTER TABLE uni1_users ADD bm_MetalMine_amount int(11) NOT NULL DEFAULT '0';
@@ -140,7 +140,7 @@ alter table uni1_users add immunity_until int(11) not null default '0';
  ALTER TABLE uni1_users ADD bm_FuelTech_amount int(11) NOT NULL DEFAULT '0';
 
 
-//AFORUM
+###AFORUM
 CREATE TABLE IF NOT EXISTS `uni1_aforum` (
   `ticketID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `universe` tinyint(3) unsigned NOT NULL,
@@ -176,4 +176,4 @@ CREATE TABLE IF NOT EXISTS `uni1_aforum_category` (
 alter table uni1_users add lastaforum int(11) not null default '0';
 
 
-//
+###

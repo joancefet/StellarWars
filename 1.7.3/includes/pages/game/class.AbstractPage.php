@@ -155,7 +155,7 @@ abstract class AbstractPage
 			}
 		}
 		
-		$query818	= $GLOBALS['DATABASE']->query("SELECT time FROM ".FORUM." ORDER BY time DESC LIMIT 1;");
+		/*$query818	= $GLOBALS['DATABASE']->query("SELECT time FROM ".FORUM." ORDER BY time DESC LIMIT 1;");
 		while($ticket818 = $GLOBALS['DATABASE']->fetch_array($query818)){
 			if ( $USER['lastforum'] < $ticket818['time'] ) {
 				$af_lastpostaction5	= 1;
@@ -166,16 +166,16 @@ abstract class AbstractPage
 		
 		$query616 = $GLOBALS['DATABASE']->countquery("SELECT COUNT(*) FROM ".FLEETS." WHERE `fleet_target_owner` = '".$USER['id']."' AND `fleet_start_time` > '".TIMESTAMP."' AND `fleet_mission` = '1'");
 		
-		$query717 = $GLOBALS['DATABASE']->countquery("SELECT COUNT(*) FROM ".FLEETS." WHERE `fleeT_universe` = '".$USER['universe']."' AND `fleet_ally` = '".$USER['ally_id']."' AND `fleet_mission` = '1' AND `fleet_start_time` > '".TIMESTAMP."'");
+		$query717 = $GLOBALS['DATABASE']->countquery("SELECT COUNT(*) FROM ".FLEETS." WHERE `fleeT_universe` = '".$USER['universe']."' AND `fleet_ally` = '".$USER['ally_id']."' AND `fleet_mission` = '1' AND `fleet_start_time` > '".TIMESTAMP."'");*/
 		//fimeditado
 		
 		$themeSettings	= $THEME->getStyleSettings();
 		
 		$this->tplObj->assign_vars(array(
 			'query515'			=> $query515,
-			'query818'			=> $query818,	
+			/*'query818'			=> $query818,	
 			'query717'			=> $query717,
-			'query616'			=> $query616,
+			'query616'			=> $query616,*/
 			'af_lastpostaction2' 		=> $af_lastpostaction2,
 			'af_lastpostaction5' 		=> $af_lastpostaction5,	
 			'PlanetSelect'		=> $PlanetSelect,

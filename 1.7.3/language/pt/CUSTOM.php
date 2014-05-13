@@ -413,3 +413,37 @@ $LNG['achievements_lab4_require_1']					= 'Your Scientologist Officer must be at
 $LNG['achievements_lab4_done']						= 'You have completed now the <font color=yellow><b>Scientologist</b></font> Achievement!';
 $LNG['achievements_lab4_success']					= 'Congratulations! You have now completed the <font color=yellow><b>Scientologist</b></font> achievement<br>You have been rewarded bonus Dark Matter<br><br>Please reload the page';
 
+//----------------------------------------------------------------------------//
+//----------------------------------------------------------------------------//
+// Ally Forum
+$LNG['af_header']                           = 'Forum da Aliança';
+$LNG['af_header_g'] 			    = 'Tópico Fechado';
+$LNG['af_ticket_id']                        = 'Autor';
+$LNG['af_subject']                             = 'Assunto';
+$LNG['af_status']                              = 'Estado';
+$LNG['af_ticket_posted']                       = 'Data Envio';
+$LNG['af_ticket_new']                          = 'Abrir Novo Tópico';
+$LNG['af_input_text']                          = 'Texto';
+$LNG['af_answer_new']                          = 'Responder:';
+$LNG['af_text']                                = 'Mensagem';
+$LNG['af_message_a']                           = 'Estado do Tópico:';
+$LNG['af_sendit_a']                            = 'A sua mensagem foi enviada. Aguarde pela resposta.';
+$LNG['af_message_t']                           = 'Estado dos Tópicos';
+$LNG['af_send'] 							= 'Enviar';
+$LNG['af_sendit_t']                            = 'O seu Tópico foi criado. Aguarde pelas respostas.';
+$LNG['af_close_t']                             = 'O Tópico foi fechado.';
+$LNG['af_sendit_error']                        = 'Erro:';
+$LNG['af_sendit_error_msg']                    = 'Não completaste o tópico!';
+$LNG['af_admin_system']                   = 'Support-Admin-panel';
+$LNG['af_close_ticket']                        = 'Fechar Tópico';
+$LNG['af_open_ticket'] 					    = 'Abrir Tópico';
+$LNG['af_player']                              = 'Usuário';
+$LNG['af_ticket_close']                   = 'Tópico fechado';
+$LNG['af_close']                          = 'Fechado';
+$LNG['af_open']                           = 'Aberto';
+$LNG['af_admin_answer']                   = 'Resposta:';
+$LNG['af_player_write']                   = '%s postado %s';
+$LNG['af_player_answer']                  = 'Aberto';
+$LNG['af_open_t']				  = 'O Tópico foi reaberto.';
+$LNG['af_delete_t']				  = 'O Tópico foi deletado.';
+$LNG['af_delete_confirm']		  = 'Tem certeza que deseja apagar este topico? Esta operacao e irreversivel.';
