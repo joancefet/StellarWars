@@ -59,6 +59,7 @@ class ShowNotesPage extends AbstractPage
 		
 		$this->tplObj->assign_vars(array(
 			'notesList'	=> $notesList,
+			'new_message' 		=> $USER['messages'],
 		));
 		
 		$this->display('page.notes.default.tpl');
