@@ -22,7 +22,7 @@
  * @copyright 2012 Jan Kröpke <info@2moons.cc>
  * @license http://www.gnu.org/licenses/gpl.html GNU GPLv3 License
  * @version 1.7.3 (2013-05-19)
- * @info $Id: class.ShowResearchPage.php 2749 2013-05-19 11:43:20Z slaver7 $
+ * @info $Id: class.ShowResearchPage.php 2632 2013-03-18 19:05:14Z slaver7 $
  * @link http://2moons.cc/
  */
 
@@ -51,7 +51,38 @@ class ShowResearchPage extends AbstractPage
 
 		return true;
 	}
-	
+	 private function InstantBuildingFromQueue()
+	{
+		global $PLANET, $USER, $resource, $CONF, $reslist;
+
+			
+		
+			
+                        				/* INSTANT BUILDER / RESEARCH - Version 1.0 */
+			/* Check ob User genügend DM hat.*/
+			$CurrentQueue  = unserialize($USER['b_tech_queue']);
+		$Element             	= $CurrentQueue[0][0];
+		$Element1             	= $USER['b_tech_id'];
+		
+
+            $BuildLevel					= $USER[$resource[$Element]] + 1;
+			$BuildEndTime					= TIMESTAMP + 0;
+                        
+		
+		
+
+			
+			$USER['b_tech_queue']		= serialize(array(array($Element, $BuildLevel, $BuildEndTime, $PLANET['id'])));
+			$USER['b_tech']				= $BuildEndTime;
+			$USER['b_tech_id']			= $Element;
+			$USER['b_tech_planet']		= $PLANET['id'];
+            $USER['darkmatter']		-= 20000;
+			
+			
+
+		 
+
+	}
 	private function CancelBuildingFromQueue()
 	{
 		global $PLANET, $USER, $resource;
@@ -180,7 +211,7 @@ class ShowResearchPage extends AbstractPage
 			$USER['b_tech_queue'] = "";
 	}
 
-	private function AddBuildingToQueue($Element, $AddMode = true)
+	private function AddBuildingToQueue($Element, $AddMode = true) 
 	{
 		global $PLANET, $USER, $resource, $CONF, $reslist, $pricelist;
 
@@ -312,6 +343,11 @@ class ShowResearchPage extends AbstractPage
 				case 'remove':
 					$this->RemoveBuildingFromQueue($ListID);
 				break;
+				       /* INSTANT BUILDER / RESEARCH - Version 1.0 */ 	 	
+				 	case 'instant':
+					$this->InstantBuildingFromQueue(); 	 	
+				break; 	 	
+	/* INSTANT BUILDER / RESEARCH - Version 1.0 */ 
 				case 'insert':
 					$this->AddBuildingToQueue($Element, true);
 				break;
@@ -366,6 +402,16 @@ class ShowResearchPage extends AbstractPage
 		}
 		
 		$this->tplObj->assign_vars(array(
+		 'dmavaible' => $USER['darkmatter'],
+                        'modinstant'	=> $CONF['modinstant'],
+						/*
+						 /* INSTANT BUILDER / RESEARCH - Version 1.0 */ 		 	
+	                	 	
+	'mod_instant_costs_res'=>$LNG['mod_instant_costs_res'], 	 	
+	'mod_instant_costs_res2'=>$LNG['mod_instant_costs_res2'], 	 	
+	'DM'				=> $LNG['Darkmatter'], 
+	 'mod_research_cost'	=> $CONF['modinstantresearch'], 
+			'modinstantresen' => $CONF['modinstantresen'],
 			'ResearchList'	=> $ResearchList,
 			'IsLabinBuild'	=> !$bContinue,
 			'IsFullQueue'	=> Config::get('max_elements_tech') == 0 || Config::get('max_elements_tech') == count($TechQueue),

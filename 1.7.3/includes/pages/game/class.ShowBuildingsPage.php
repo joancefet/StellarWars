@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  *  2Moons
@@ -22,7 +22,7 @@
  * @copyright 2012 Jan Kröpke <info@2moons.cc>
  * @license http://www.gnu.org/licenses/gpl.html GNU GPLv3 License
  * @version 1.7.3 (2013-05-19)
- * @info $Id: class.ShowBuildingsPage.php 2749 2013-05-19 11:43:20Z slaver7 $
+ * @info $Id: class.ShowBuildingsPage.php 2632 2013-03-18 19:05:14Z slaver7 $
  * @link http://2moons.cc/
  */
 
@@ -30,11 +30,34 @@ class ShowBuildingsPage extends AbstractPage
 {	
 	public static $requireModule = MODULE_BUILDING;
 
+
+ private $bOnInsert=FALSE;
+
 	function __construct() 
 	{
 		parent::__construct();
 	}
-	
+	 private function InstantBuildingFromQueue()
+	{
+		global $PLANET, $USER, $resource, $CONF, $reslist, $pricelist;
+		
+		$CurrentQueue  = unserialize($PLANET['b_building_id']);
+		$Element             	= $CurrentQueue[0][0];
+		$BuildMode          	= $CurrentQueue[0][4];
+		$BuildLevel			= $PLANET[$resource[$Element]] +1;
+
+			$elementTime    			= 0;
+			$BuildEndTime				= TIMESTAMP + $elementTime;
+			
+			$PLANET['b_building_id']	= serialize(array(array($Element, $BuildLevel, $elementTime, $BuildEndTime, $BuildMode )));
+			$PLANET['b_building']		= $BuildEndTime;
+			
+			
+			$USER['darkmatter']		-= 15000;
+		
+		 
+
+	}
 	private function CancelBuildingFromQueue()
 	{
 		global $PLANET, $USER, $resource;
@@ -126,8 +149,25 @@ class ShowBuildingsPage extends AbstractPage
         return true;
 	}
 
-	private function AddBuildingToQueue($Element, $AddMode = true)
-	{
+ private function AddBuildingToQueue($Element, $building_anz, $AddMode = true)
+ {
+  if($this->bOnInsert==FALSE)
+  {
+   $this->build_anz=(int)$_POST['building_anz'];
+   if($this->build_anz>=1)
+   {
+    $this->bOnInsert=TRUE;
+    while($this->build_anz>0)
+    {
+     $this->DoAddBuildingToQueue($Element, $AddMode);
+     $this->build_anz=$this->build_anz-1;
+    }
+    $this->bOnInsert=FALSE;
+   }
+  }
+ }
+
+ private function DoAddBuildingToQueue($Element, $AddMode = true)	{
 		global $PLANET, $USER, $resource, $CONF, $reslist, $pricelist;
 		
 		if(!in_array($Element, $reslist['allow'][$PLANET['planet_type']])
@@ -250,20 +290,23 @@ class ShowBuildingsPage extends AbstractPage
 			$Element     	= HTTP::_GP('building', 0);
 			$ListID      	= HTTP::_GP('listid', 0);
 			switch($TheCommand)
-			{
-				case 'cancel':
-					$this->CancelBuildingFromQueue();
-				break;
-				case 'remove':
-					$this->RemoveBuildingFromQueue($ListID);
-				break;
-				case 'insert':
-					$this->AddBuildingToQueue($Element, true);
-				break;
-				case 'destroy':
-					$this->AddBuildingToQueue($Element, false);
-				break;
-			}
+   {
+    case 'cancel':
+     $this->CancelBuildingFromQueue();
+    break;
+    case 'remove':
+     $this->RemoveBuildingFromQueue($ListID);
+    break;
+        case 'instant':
+     $this->InstantBuildingFromQueue();
+    break;
+    case 'insert':
+     $this->AddBuildingToQueue($Element, true);
+    break;
+    case 'destroy':
+     $this->DoAddBuildingToQueue($Element, false);
+    break;
+   }
 			
 			$this->redirectTo('game.php?page=buildings');
 		}
@@ -346,6 +389,9 @@ class ShowBuildingsPage extends AbstractPage
 		}
 		
 		$this->tplObj->assign_vars(array(
+			'dmavaible' => $USER['darkmatter'],
+                        'modinstant'	=> $CONF['modinstant'],
+			'modinstantbuilds' => $CONF['modinstantbuilds'],
 			'BuildInfoList'		=> $BuildInfoList,
 			'CanBuildElement'	=> $CanBuildElement,
 			'RoomIsOk'			=> $RoomIsOk,

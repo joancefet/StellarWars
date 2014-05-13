@@ -1,0 +1,7 @@
+//INSTANT RESEARCH BUILDING
+alter table uni1_config add modinstant int(11) not null default '1';
+alter table uni1_config add modinstantresearch int(11) not null default '1';
+alter table uni1_config add modinstantresen int(11) not null default '1';
+alter table uni1_config add modinstantbuilds int(11) not null default '1';
+
+

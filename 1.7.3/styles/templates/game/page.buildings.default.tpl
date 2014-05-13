@@ -20,20 +20,36 @@
 			</td>
 			<td>
 				<div id="time" data-time="{$List.time}"><br></div>
-				<form action="game.php?page=buildings" method="post" class="build_form">
-					<input type="hidden" name="cmd" value="cancel">
-					<button type="submit" class="build_submit onlist">{$LNG.bd_cancel}</button>
-				</form>
+				
+					<form action="game.php?page=buildings" method="post" class="build_form"> 	
+	<input type="hidden" name="cmd" value="cancel">	
+	<button type="submit" class="build_submit onlist">{$LNG.bd_cancel}</button> 		
+	</form> 
+				 {if $modinstant == 1 && $modinstantbuilds == 1}
+                    
+					{if $dmavaible < 10000}
+					<form action="game.php?page=buildings" method="post" class="post">
+					<button type="submit" class="buttonbau gray" disabled>Instant Building</button></form>
+					{else}
+						<form action="game.php?page=buildings" method="post" class="post">
+							<input type="hidden" name="cmd" value="instant">
+                                                        <button type="submit" class="buttonbau greenbau" enabled>Instant Building</button>
+						</form>
+					{/if}{/if}
 				{else}
 			</td>
 			<td>
-				<form action="game.php?page=buildings" method="post" class="build_form">
-					<input type="hidden" name="cmd" value="remove">
-					<input type="hidden" name="listid" value="{$List@iteration}">
-					<button type="submit" class="build_submit onlist">{$LNG.bd_cancel}</button>
-				</form>
+			
+			
 				{/if}
-				<br><span style="color:lime" data-time="{$List.endtime}" class="timer">{$List.display}</span>
+				<br>
+				<form action="game.php?page=buildings" method="post" class="build_form">
+						<input type="hidden" name="cmd" value="remove"> 
+						<input type="hidden" name="cmd" value="remove" />
+				<input type="hidden" name="listid" value="{$List@iteration}" />
+
+				</form>
+				<br /><span style="color:lime" data-time="{$List.endtime}" class="timer">{$List.display}</span>
 			</td>
 		</tr>
 	{/foreach}
@@ -68,12 +84,16 @@
 					{else}
 						{if $RoomIsOk}
 							{if $CanBuildElement && $Element.buyable}
-							<form action="game.php?page=buildings" method="post" class="build_form">
-								<input type="hidden" name="cmd" value="insert">
-								<input type="hidden" name="building" value="{$ID}">
-								<button type="submit" class="build_submit">{if $Element.level == 0}{$LNG.bd_build}{else}{$LNG.bd_build_next_level}{$Element.levelToBuild + 1}{/if}</button>
-							</form>
-							{else}
+
+     <button name="building_minus" onclick="buildanz({$ID},-1);">-</button>
+       <form action="game.php?page=buildings" method="post" class="build_form">
+        <input type="hidden" name="cmd" value="insert">
+        <input type="hidden" name="building" value="{$ID}">
+     <input type="text" id="building_anz{$ID}" name="building_anz" value="1" style="width:20px;">
+        <button type="submit" class="build_submit">{$LNG.bd_build}</button>
+       </form>
+     <button name="building_plus" onclick="buildanz({$ID},1);">+</button>
+      							{else}
 							<span style="color:red">{if $Element.level == 0}{$LNG.bd_build}{else}{$LNG.bd_build_next_level}{$Element.levelToBuild + 1}{/if}</span>
 							{/if}
 						{else}

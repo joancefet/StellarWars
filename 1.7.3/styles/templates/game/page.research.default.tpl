@@ -25,19 +25,40 @@
 			</td>
 			<td>
 				<div id="time" data-time="{$List.time}"><br></div>
-				<form action="game.php?page=research" method="post" class="build_form">
-					<input type="hidden" name="cmd" value="cancel">
-					<button type="submit" class="build_submit onlist">{$LNG.bd_cancel}</button>
-				</form>
+				
+				<form action="game.php?page=research" method="post" class="build_form"> 	
+	<input type="hidden" name="cmd" value="cancel">	
+	<button type="submit" class="build_submit onlist">{$LNG.bd_cancel}</button> 		
+	</form> 
+				
+			{if $modinstant == 1 && $modinstantresen == 1}
+                    
+					{if $dmavaible < 10000}
+					<form action="game.php?page=research" method="post" class="post">
+<button type="submit" class="buttonbau gray" disabled>Instant Research</button>
+</form>
+					{else}
+						<form action="game.php?page=research" method="post" class="post">
+							<input type="hidden" name="cmd" value="instant">
+                                                        <button type="submit" class="buttonbau greenbau" enabled>Instant Research</button>
+						</form>
+					{/if}{/if}
+                    
 				{else}
 			</td>
 			<td>
+				
+                    
+					
+				{/if}
+				
+				 <br>
 				<form action="game.php?page=research" method="post" class="build_form">
 					<input type="hidden" name="cmd" value="remove">
 					<input type="hidden" name="listid" value="{$List@iteration}">
-					<button type="submit" class="build_submit onlist">{$LNG.bd_cancel}</button>
+				
 				</form>
-				{/if}
+				
 				<br><span style="color:lime" data-time="{$List.endtime}" class="timer">{$List.display}</span>
 			</td>
 		</tr>
@@ -92,6 +113,7 @@
 						{foreach $Element.costOverflow as $ResType => $ResCount}
 						{$LNG.tech.{$ResType}}: <span style="font-weight:700">{$ResCount|number}</span><br>
 						{/foreach}
+						    {$LNG.mod_instant_costs_DM}<span style="font-weight:700">{$mod_research_cost} DM</span> {$LNG.mod_instant_costs_DM2}<br> 
 						<br>
 					</td>
 					<td class="transparent right">
