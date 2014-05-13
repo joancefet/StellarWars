@@ -14,6 +14,10 @@
 		{if isModulAvalible($smarty.const.MODULE_FLEET_TABLE)}<li><a href="game.php?page=fleetTable">{$LNG.lm_fleet}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_TECHTREE)}<li><a href="game.php?page=techtree">{$LNG.lm_technology}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_RESSOURCE_LIST)}<li><a href="game.php?page=resources">{$LNG.lm_resources}</a></li>{/if}
+		<li><a href="game.php?page=ptrader">Trocas Premium</a></li>
+		<li><a href="game.php?page=blackmarket">Mercado Negro</a></li>
+		<li><a href="game.php?page=immunity">Imunidade</a></li>
+		<li><a href="game.php?page=achievements">Conquistas</a></li>
 		<li class="menucat2-head"></li>
 		{if isModulAvalible($smarty.const.MODULE_GALAXY)}<li><a href="game.php?page=galaxy">{$LNG.lm_galaxy}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_ALLIANCE)}<li><a href="game.php?page=alliance">{$LNG.lm_alliance}</a></li>{/if}
