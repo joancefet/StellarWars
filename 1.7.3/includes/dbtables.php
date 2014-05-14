@@ -81,3 +81,5 @@ define('AFORUM'				, DB_PREFIX.'aforum');
 define('AFORUM_ANSWER'		, DB_PREFIX.'aforum_answer');
 define('AFORUM_CATEGORY'	, DB_PREFIX.'aforum_category');
 define('FORUM'				, DB_PREFIX.'forum');
+define('FORUM_ANSWER'		, DB_PREFIX.'forum_answer');
+define('FORUM_CATEGORY'	, DB_PREFIX.'forum_category');
