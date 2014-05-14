@@ -416,7 +416,7 @@ $LNG['achievements_lab4_success']					= 'Congratulations! You have now completed
 //----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
 // Ally Forum
-$LNG['af_header']                           = 'Forum da Aliança';
+/*$LNG['af_header']                           = 'Forum da Aliança';
 $LNG['af_header_g'] 			    = 'Tópico Fechado';
 $LNG['af_ticket_id']                        = 'Autor';
 $LNG['af_subject']                             = 'Assunto';
@@ -446,4 +446,38 @@ $LNG['af_player_write']                   = '%s postado %s';
 $LNG['af_player_answer']                  = 'Aberto';
 $LNG['af_open_t']				  = 'O Tópico foi reaberto.';
 $LNG['af_delete_t']				  = 'O Tópico foi deletado.';
-$LNG['af_delete_confirm']		  = 'Tem certeza que deseja apagar este topico? Esta operacao e irreversivel.';
+$LNG['af_delete_confirm']		  = 'Tem certeza que deseja apagar este topico? Esta operacao e irreversivel.';*/
+$LNG['af_header'] 							= 'Sistema de Suporte';
+$LNG['af_overview'] 						= 'Voltar';
+$LNG['af_id'] 								= 'Ticket';
+$LNG['af_username'] 						= 'Jogador';
+$LNG['af_subject'] 							= 'Assunto';
+$LNG['af_status'] 							= 'Estado';
+$LNG['af_date'] 							= 'Data';
+$LNG['af_answers'] 							= 'Resposta';
+$LNG['af_close'] 							= 'Ticket fechado';
+$LNG['af_open'] 							= 'Ticket aberto';
+$LNG['af_new'] 								= 'Novo ticket';
+$LNG['af_status_open'] 						= 'Aberto';
+$LNG['af_status_closed'] 					= 'Fechado';
+$LNG['af_status_answer'] 					= 'Resposta';
+$LNG['af_admin_open'] 						= 'O ticket foi aberto!';
+$LNG['af_admin_close'] 						= 'O ticket foi fechado!';
+$LNG['af_error_closed'] 					= 'Não é possivel responder porque o ticket foi fechado.';
+$LNG['af_create_info']						= '<p>Por favor, quando criares um Ticket de Suporte, descreve e explica qual é a sua questão com o máximo detalhe possível!</p>
+<p>Uma descrição detalhada do que pretendes perguntar, encurta a duração do tempo de resolução e evita a perda de tempo de ambos os lados</p>
+<p>Para questões relacionadas com contas, especificar facilita a atribuição do problema e também encurta o tempo.</p>';
+$LNG['af_create_head']						= 'Criar Ticket';
+$LNG['af_category']							= 'Categoria';
+$LNG['af_subject']							= 'Assunto';
+$LNG['af_message']							= 'Mensagem';
+$LNG['af_submit']							= 'Enviar';
+$LNG['af_read']								= 'Ticket a ler';
+$LNG['af_answer']							= 'Responder';
+$LNG['af_create']							= 'Ticket criado em ';
+$LNG['af_responded']						= 'Ticket respondido em ';
+$LNG['af_not_exist']						= 'Das Ticket #%d existiert nicht!';
+$LNG['af_from']								= 'por';
+$LNG['af_re']								= 'RE:';
+$LNG['af_error_no_subject']					= 'Precisas de por um título!!';
+$LNG['af_msgtime']							= 'Mensagem enviada em';

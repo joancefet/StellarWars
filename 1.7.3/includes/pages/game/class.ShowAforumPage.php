@@ -95,13 +95,13 @@ class ShowAforumPage extends AbstractPage
 		
 		if(empty($ticketID)) {
 			if(empty($subject)) {
-				$this->printMessage($LNG['ti_error_no_subject']);
+				$this->printMessage($LNG['af_error_no_subject']);
 			}
 			$ticketID	= $this->ticketObj->createTicket($USER['id'], $categoryID, $subject, $USER['ally_id']);
 		} else {
 			$ticketDetail	= $GLOBALS['DATABASE']->getFirstCell("SELECT status FROM ".AFORUM." WHERE ticketID = ".$ticketID.";");
 			if ($ticketDetail['status'] == 2)
-				$this->printMessage($LNG['ti_error_closed']);
+				$this->printMessage($LNG['af_error_closed']);
 		}
 			
 		$this->ticketObj->createAnswer($ticketID, $USER['id'], $USER['username'], $USER['ally_id'], '', $message, 0);
@@ -119,7 +119,7 @@ class ShowAforumPage extends AbstractPage
 		$answerList			= array();
 
 		if($GLOBALS['DATABASE']->numRows($answerResult) == 0) {
-			$this->printMessage(sprintf($LNG['ti_not_exist'], $ticketID));
+			$this->printMessage(sprintf($LNG['af_not_exist'], $ticketID));
 		}
 
 		$ticket_status = 'Unknown';
