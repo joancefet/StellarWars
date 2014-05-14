@@ -176,4 +176,37 @@ CREATE TABLE IF NOT EXISTS `uni1_aforum_category` (
 alter table uni1_users add lastaforum int(11) not null default '0';
 
 
-###
+###FORUM UNIVERSAL
+CREATE TABLE IF NOT EXISTS `uni1_forum` (
+  `ticketID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `universe` tinyint(3) unsigned NOT NULL,
+  `ownerID` int(10) unsigned NOT NULL,
+  `categoryID` tinyint(1) unsigned NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `time` int(10) unsigned NOT NULL,
+  `ally_id` int(11) NOT NULL,
+  PRIMARY KEY (`ticketID`),
+  KEY `ownerID` (`ownerID`),
+  KEY `universe` (`universe`,`status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `uni1_forum_answer` (
+  `answerID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ownerID` int(10) unsigned NOT NULL,
+  `ownerName` varchar(32) NOT NULL,
+  `ticketID` int(10) unsigned NOT NULL,
+  `time` int(10) unsigned NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` mediumtext NOT NULL,
+  `ally_id` int(11) NOT NULL,
+  PRIMARY KEY (`answerID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `uni1_forum_category` (
+  `categoryID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`categoryID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+alter table uni1_users add lastforum int(11) not null default '0';
