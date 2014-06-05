@@ -15,6 +15,7 @@
 		{if isModulAvalible($smarty.const.MODULE_TECHTREE)}<li><a href="game.php?page=techtree">{$LNG.lm_technology}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_RESSOURCE_LIST)}<li><a href="game.php?page=resources">{$LNG.lm_resources}</a></li>{/if}
 		<li><a href="game.php?page=ptrader">Trocas Premium</a></li>
+		<li><a href="game.php?page=harvest">Transferir Recursos</a></li>
 		<li><a href="game.php?page=blackmarket">Mercado Negro</a></li>
 		<li><a href="game.php?page=immunity">Imunidade</a></li>
 		<li><a href="game.php?page=achievements">Conquistas</a></li>

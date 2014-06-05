@@ -210,3 +210,8 @@ CREATE TABLE IF NOT EXISTS `uni1_forum_category` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 alter table uni1_users add lastforum int(11) not null default '0';
+
+
+###HARVEST MOD
+alter table uni1_users add harvest_time int(11) not null default '0';
+alter table uni1_users add harvest_delay int(11) not null default '0';
