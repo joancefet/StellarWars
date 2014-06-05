@@ -1,6 +1,4 @@
-{block name="title" prepend}{$LNG.siteTitleRegister}{/block}
 {block name="content"}
-<div id="registerFormWrapper">
 <form id="registerForm" method="post" action="index.php?page=register" data-action="index.php?page=register">
 <input type="hidden" value="send" name="mode">
 <input type="hidden" value="{$externalAuth.account}" name="externalAuth[account]">
@@ -8,7 +6,7 @@
 <input type="hidden" value="{$referralData.id}" name="referralID">
 	<div class="rowForm">
 		<label for="universe">{$LNG.universe}</label>
-		<select name="uni" id="universe" class="changeAction">{html_options options=$universeSelect selected=$UNI}</select>
+		<select name="uni" class="main-form" id="universe" class="changeAction">{html_options options=$universeSelect selected=$UNI}</select>
 		{if !empty($error.uni)}<span class="error errorUni"></span>{/if}
 	</div>
 	{if !empty($externalAuth.account)}
@@ -28,38 +26,38 @@
 	{/if}
 	<div class="rowForm">
 		<label for="username">{$LNG.registerUsername}</label>
-		<input type="text" class="input" name="username" id="username" maxlenght="32">
+		<input type="text" class="main-form" name="username" id="username" maxlenght="32">
 		{if !empty($error.username)}<span class="error errorUsername"></span>{/if}
 		<span class="inputDesc">{$LNG.registerUsernameDesc}</span>
 	</div>
 	<div class="rowForm">
 		<label for="password">{$LNG.registerPassword}</label>
-		<input type="password" class="input" name="password" id="password">
+		<input type="password" class="main-form" name="password" id="password">
 		{if !empty($error.password)}<span class="error errorPassword"></span>{/if}
 		<span class="inputDesc">{$LNG.registerPasswordDesc}</span>
 	</div>
 	<div class="rowForm">
 		<label for="passwordReplay">{$LNG.registerPasswordReplay}</label>
-		<input type="password" class="input" name="passwordReplay" id="passwordReplay">
+		<input type="password" class="main-form" name="passwordReplay" id="passwordReplay">
 		{if !empty($error.passwordReplay)}<span class="error errorPasswordReplay"></span>{/if}
 		<span class="inputDesc">{$LNG.registerPasswordReplayDesc}</span>
 	</div>
 	<div class="rowForm">
 		<label for="email">{$LNG.registerEmail}</label>
-		<input type="email" class="input" name="email" id="email">
+		<input type="email" class="main-form" name="email" id="email">
 		{if !empty($error.email)}<span class="error errorEmail"></span>{/if}
 		<span class="inputDesc">{$LNG.registerEmailDesc}</span>
 	</div>
 	<div class="rowForm">
 		<label for="emailReplay">{$LNG.registerEmailReplay}</label>
-		<input type="email" class="input" name="emailReplay" id="emailReplay">
+		<input type="email" class="main-form" name="emailReplay" id="emailReplay">
 		{if !empty($error.emailReplay)}<span class="error errorEmailReplay"></span>{/if}
 		<span class="inputDesc">{$LNG.registerEmailReplayDesc}</span>
 	</div>
 	{if count($languages) > 1}
 	<div class="rowForm">
 		<label for="language">{$LNG.registerLanguage}</label>
-		<select name="lang" id="language">{html_options options=$languages selected=$lang}</select>
+		<select class="main-form" name="lang" id="language">{html_options options=$languages selected=$lang}</select>
 		{if !empty($error.language)}<span class="error errorLanguage"></span>{/if}
 		<div class="clear"></div>
 	</div>
@@ -78,7 +76,7 @@
 			<label for="recaptcha_response_field">{$LNG.registerCaptcha}<p class="captchaButtons"><a href="javascript:Recaptcha.reload()">{$LNG.registerCaptchaReload}</a></p></label>
 			<span class="inputDesc">{$LNG.registerCaptchaDesc}</span>
 			<div id="recaptcha_image"></div>			
-			<div id="recaptcha_input_wrap"><input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="input"></div>
+			<div id="recaptcha_input_wrap"><input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="main-form"></div>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -90,7 +88,7 @@
 		<span class="inputDesc">{$registerRulesDesc}</span>
 	</div>
 	<div class="rowForm">
-		<input type="submit" class="submitButton" value="{$LNG.buttonRegister}">
+		<p align=right><input type="submit" class="main-form2" value="{$LNG.buttonRegister}"></p>
 	</div>
 </form>
 {/block}

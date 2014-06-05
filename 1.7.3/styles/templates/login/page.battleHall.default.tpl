@@ -3,7 +3,7 @@
 {if $isMultiUniverse}<p>
 {html_options options=$universeSelect selected=$UNI class="changeUni" id="universe" name="universe"}
 </p>{/if}
-<table>
+<table style="width:100%">
 <tr>
 	<th style="color:lime">{$LNG.tkb_platz}</th>
 	<th style="color:lime">{$LNG.tkb_owners}</th>
@@ -27,7 +27,7 @@
 </tr>
 {/foreach}
 <tr>
-<td colspan="4"><p>{$LNG.tkb_legende}<span style="color:#00FF00">{$LNG.tkb_gewinner}</span><span style="color:#FF0000">{$LNG.tkb_verlierer}</span></p></td>
+<td colspan="4"><p><center>{$LNG.tkb_legende}<span style="color:#00FF00">{$LNG.tkb_gewinner}</span><span style="color:#FF0000">{$LNG.tkb_verlierer}</span></p></td>
 </tr>
 </table>
 {/block}

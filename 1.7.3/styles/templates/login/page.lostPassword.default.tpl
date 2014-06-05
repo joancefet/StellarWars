@@ -5,21 +5,21 @@
 <input type="hidden" value="send" name="mode">
 <div class="formRow">
 	<label for="universe">{$LNG.universe}</label>
-	<select name="uni" class="changeAction" id="universe">{html_options options=$universeSelect selected=$UNI}</select>
+	<select name="uni" class="main-form" id="universe">{html_options options=$universeSelect selected=$UNI}</select>
 </div>
 <div class="formRow">
 	<label for="username">{$LNG.passwordUsername}</label>
-	<input type="text" name="username" id="username">
+	<input type="text" name="username" id="username" class="main-form">
 </div>
 <div class="formRow">
 	<label for="mail">{$LNG.passwordMail}</label>
-	<input type="text" name="mail" id="mail">
+	<input type="text" name="mail" id="mail" class="main-form">
 </div>
 {if $recaptchaEnable}
 <div class="formRow">
 	<div id="recaptcha_widget">
 		<label for="recaptcha_response_field">{$LNG.registerCaptcha}<p class="captchaButtons"><a href="javascript:Recaptcha.reload()">{$LNG.registerCaptchaReload}</a></p></label>
-		<div id="recaptcha_input_wrap"><input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="input"></div>
+		<div id="recaptcha_input_wrap"><input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="main-form"></div>
 		<span class="inputDesc">{$LNG.registerCaptchaDesc}</span>		
 		<div id="recaptcha_image"></div>
 	</div>
@@ -27,7 +27,7 @@
 </div>
 {/if}
 <div class="formRow">
-	<input type="submit" class="submitButton" value="{$LNG.passwordSubmit}">
+	<input type="submit" class="main-form2" value="{$LNG.passwordSubmit}">
 </div>
 </form>
 {/block}

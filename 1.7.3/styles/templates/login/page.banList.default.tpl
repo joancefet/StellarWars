@@ -3,7 +3,7 @@
 {if $isMultiUniverse}<p>
 {html_options options=$universeSelect selected=$UNI class="changeUni" id="universe" name="universe"}
 </p>{/if}
-<table>
+<table style="width:100%">
 	<tr>
 		<th colspan="5">{$LNG.bn_players_banned_list}</th>
 	</tr>

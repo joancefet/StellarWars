@@ -1,42 +1,59 @@
 {include file="main.header.tpl"}
 {include file="main.navigation.tpl"}
 <div id="content">
-<section>
-	<table class="box-out">
-		<tr class="box-out-header">
-			<td class="box-out-header-left"></td>
-			<td class="box-out-header-center"></td>
-			<td class="box-out-header-right"></td>
-		</tr>
-		<tr class="box-out-content">
-			<td class="box-out-content-left"></td>
-			<td class="box-out-content-center">
-				<table class="box-inner">
-					<tr class="box-inner-header">
-						<td class="box-inner-header-left"></td>
-						<td class="box-inner-header-center"><h1>{block name=title}{/block}</h1></td>
-						<td class="box-inner-header-right"></td>
-					</tr>
-					<tr class="box-inner-content">
-						<td class="box-inner-content-left"></td>
-						<td class="box-inner-content-center">{block name=content} {/block}</td>
-						<td class="box-inner-content-right"></td>
-					</tr>
-					<tr class="box-inner-footer">
-						<td class="box-inner-footer-left"></td>
-						<td class="box-inner-footer-center"></td>
-						<td class="box-inner-footer-right"></td>
-					</tr>
-				</table>					
-			</td>
-			<td class="box-out-content-right"></td>
-		</tr>
-		<tr class="box-out-footer">
-			<td class="box-out-footer-left"></td>
-			<td class="box-out-footer-center"></td>
-			<td class="box-out-footer-right"></td>
-		</tr>
-	</table>
-</section>
+<div id="main">
+<header>
+<div id="logo">
+<div id="logo_text">
+<img src="login/images/game.png" />
 </div>
+</div>
+<nav>
+<div id="menu_container">
+<ul class="sf-menu" id="nav">
+<li><a href="index.php">{$LNG.menu_index}</a></li>
+<li><a href="index.php?page=board" target="board">{$LNG.forum}</a></li>
+<li><a href="index.php?page=news">{$LNG.menu_news}</a></li>
+<li><a href="index.php?page=rules">{$LNG.menu_rules}</a></li>
+<li><a href="index.php?page=battleHall">{$LNG.menu_battlehall}</a></li>
+<li><a href="index.php?page=banList">{$LNG.menu_banlist}</a></li>
+<li><a href="index.php?page=disclamer">{$LNG.menu_disclamer}</a></li>
+</ul>
+</div>
+</nav>
+</header>
+<div id="site_content">
+<div id="sidebar_container">
+<div class="sidebar">
+<a href="index.php?page=register"><input class="main-form2" type="submit" value="Register"></a><br>
+<a href="index.php?page=lostPassword"><input class="main-form2" type="submit" value="Lost Password?"></a><br>
+<h4>News</h4>
+<p>
+No News
+</p>
+</div>
+
+</div>
+<div class="content">
+<p>
+{block name=content} {/block}
+</p>
+
+</div>
+</div>
+<footer>
+<p>Copyright &copy; {$gameName} and <a href="http://qwatakayean.co.vu">QwataKayean</a></p>
+</footer>
+</div>
+<p>&nbsp;</p>
+<!-- javascript at the bottom for fast page loading -->
+<script type="text/javascript" src="login/js/jquery.js"></script>
+<script type="text/javascript" src="login/js/jquery.easing-sooper.js"></script>
+<script type="text/javascript" src="login/js/jquery.sooperfish.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+$('ul.sf-menu').sooperfish();
+});
+</script>
+
 {include file="main.footer.tpl" nocache}

@@ -1,11 +1,10 @@
-{block name="title" prepend}{$LNG.siteTitleNews}{/block}
 {block name="content"}
 {foreach $newsList as $newsRow}
 {if !$newsRow@first}<hr>{/if}
-<h2>{$newsRow.title}</h2><br>
-<div class="info">{$newsRow.from}</div>
+<font color="#F67F00"><b>{$newsRow.title}</b></font> &nbsp ({$newsRow.from})
+
 <br><div><p>{$newsRow.text}</p></div>
 {foreachelse}
-<h1>{$LNG.news_does_not_exist}</h1>
+<font color="#F67F00"><b>{$LNG.news_does_not_exist}</b></font></h1>
 {/foreach}
 {/block}

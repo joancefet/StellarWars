@@ -35,11 +35,26 @@ class ShowIndexPage extends AbstractPage
 		parent::__construct();
 		$this->setWindow('light');
 	}
+
 	
 	function show() 
 	{
-		global $LNG;
+		global $LNG, $CONF, $UNI;
 		
+
+		
+		$newsResult	= $GLOBALS['DATABASE']->query("SELECT date, title, text, user FROM ".NEWS." ORDER BY id DESC;");
+		$newsList	= array();
+		
+		while ($newsRow = $GLOBALS['DATABASE']->fetchArray($newsResult))
+		{
+			$newsList[]	= array(
+				'title' => $newsRow['title'],
+				'from' 	=> t('news_from', _date(t('php_tdformat'), $newsRow['date']), $newsRow['user']),
+				'text' 	=> makebr($newsRow['text']),
+			);
+		}		
+
 		$referralID		= HTTP::_GP('ref', 0);
 		if(!empty($referralID))
 		{
@@ -77,11 +92,32 @@ class ShowIndexPage extends AbstractPage
 				}
 			}
 		}
+
+		$Online 	= $GLOBALS['DATABASE']->countquery("SELECT COUNT(*) FROM ".USERS." WHERE universe = ".$UNI." AND onlinetime > '".(TIMESTAMP - 15 * 60 )."';");
+		$User		= $GLOBALS['DATABASE']->countquery("SELECT COUNT(*) FROM ".USERS." WHERE universe = ".$UNI.";");
+		$Planet 	= $GLOBALS['DATABASE']->countquery("SELECT COUNT(*) FROM ".PLANETS." WHERE universe = ".$UNI.";");
+		$Last		= $GLOBALS['DATABASE']->countquery("SELECT `username` FROM ".USERS." ORDER BY register_time DESC LIMIT 1;");
+		
 		
 		$this->assign(array(
+			'game_speed'		=> $CONF['game_speed']/2500,
+			'fleet_speed'		=> $CONF['fleet_speed']/2500,
+			'resource_multiplier'		=> $CONF['resource_multiplier'],
+			'Fleet_Cdr'		=> $CONF['Fleet_Cdr'],
+			'Defs_Cdr'		=> $CONF['Defs_Cdr'],
+			
 			'referralUserID'		=> $referralUserID,
 			'referralUniversum'		=> $referralUniversum,
 			'universeSelect'		=> $universeSelect,
+			
+			
+			
+			'online'				=> $Online,
+			'user'					=> $User,
+			'planet'				=> $Planet,
+			'last'					=> $Last,
+			'newsList'				=> $newsList,
+
 			'code'					=> $loginCode,
 			'descHeader'			=> t('loginWelcome', Config::get('game_name')),
 			'descText'				=> t('loginServerDesc', Config::get('game_name')),
