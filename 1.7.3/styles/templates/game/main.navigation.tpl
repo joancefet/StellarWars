@@ -14,15 +14,16 @@
 		{if isModulAvalible($smarty.const.MODULE_FLEET_TABLE)}<li><a href="game.php?page=fleetTable">{$LNG.lm_fleet}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_TECHTREE)}<li><a href="game.php?page=techtree">{$LNG.lm_technology}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_RESSOURCE_LIST)}<li><a href="game.php?page=resources">{$LNG.lm_resources}</a></li>{/if}
-		<li><a href="game.php?page=ptrader">Trocas Premium</a></li>
-		<li><a href="game.php?page=harvest">Coletar Recursos</a></li>
-		<li><a href="game.php?page=JumpFleet">Coletar Frotas</a></li>
-		<li><a href="game.php?page=blackmarket">Mercado Negro</a></li>
-		<li><a href="game.php?page=immunity">Imunidade</a></li>
-		<li><a href="game.php?page=achievements">Conquistas</a></li>
+		<li><a href="?page=ptrader">Trocas Premium</a></li>
+		<li><a href="?page=harvest">Coletar Recursos</a></li>
+		<li><a href="?page=jumpfleet">Coletar Frotas</a></li>
+		<li><a href="?page=blackmarket">Mercado Negro</a></li>
+		<li><a href="?page=immunity">Imunidade</a></li>
+		<li><a href="?page=achievements">Conquistas</a></li>
 		<li class="menucat2-head"></li>
 		{if isModulAvalible($smarty.const.MODULE_GALAXY)}<li><a href="game.php?page=galaxy">{$LNG.lm_galaxy}</a></li>{/if}
 		{if isModulAvalible($smarty.const.MODULE_ALLIANCE)}<li><a href="game.php?page=alliance">{$LNG.lm_alliance}</a></li>{/if}
+		<li><a href="?page=FlyingFleetAlly">Trafego da Alianca</a></li>
 		{if $af_lastpostaction2 > 0}<li><a href="?page=aforum"><span style="background-color:red; font-weight:bold">Forum Ally</span></a></li>{/if}{if $af_lastpostaction2 == 0}<li><a href="?page=aforum">Forum Ally</a></li>{/if}
         {if $af_lastpostaction5 > 0}<li><a href="?page=forum"><span style="background-color:red; font-weight:bold">Forum Universal</span></a></li>{/if}{if $af_lastpostaction5 == 0}<li><a href="?page=forum">Forum Universal</a></li>{/if}
 		<!--{if isModulAvalible($smarty.const.MODULE_STATISTICS)}<li><a href="game.php?page=statistics">{$LNG.lm_statistics}</a></li>{/if}

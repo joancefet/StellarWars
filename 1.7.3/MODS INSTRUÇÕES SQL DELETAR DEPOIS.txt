@@ -215,3 +215,8 @@ alter table uni1_users add lastforum int(11) not null default '0';
 ###HARVEST MOD
 alter table uni1_users add harvest_time int(11) not null default '0';
 alter table uni1_users add harvest_delay int(11) not null default '0';
+
+
+###TRAFEGO DA ALIANÇA
+alter table uni1_fleets add fleet_ally int(11) not null default '0';
+alter table uni1_fleets add fleet_ally_owner int(11) not null default '0';

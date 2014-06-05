@@ -366,7 +366,7 @@ class FleetFunctions
 	
 	public static function sendFleet($fleetArray, $fleetMission, $fleetStartOwner, $fleetStartPlanetID, $fleetStartPlanetGalaxy, $fleetStartPlanetSystem, $fleetStartPlanetPlanet, $fleetStartPlanetType, $fleetTargetOwner, $fleetTargetPlanetID, $fleetTargetPlanetGalaxy, $fleetTargetPlanetSystem, $fleetTargetPlanetPlanet, $fleetTargetPlanetType, $fleetRessource, $fleetStartTime, $fleetStayTime, $fleetEndTime, $fleetGroup = 0, $missleTarget = 0)
 	{
-		global $resource, $UNI;
+		global $resource, $UNI, $USER;
 		$fleetShipCount	= array_sum($fleetArray);
 		$fleetData		= array();
 		$planetQuery	= "";
@@ -375,11 +375,17 @@ class FleetFunctions
 			$planetQuery[]	= $resource[$ShipID]." = ".$resource[$ShipID]." - ".floattostring($ShipCount);
 		}
 		
+		//editado
+		$TargetPlanetAllyid    = $GLOBALS['DATABASE']->uniquequery("SELECT `ally_id` FROM ".USERS." WHERE `id` = '".$fleetTargetOwner."';");
+		$OwnerPlanetAllyid     = $GLOBALS['DATABASE']->uniquequery("SELECT `ally_id` FROM ".USERS." WHERE `id` = '".$USER['id']."';");
+		
 		$SQL	= "LOCK TABLE ".LOG_FLEETS." WRITE, ".FLEETS_EVENT." WRITE, ".FLEETS." WRITE, ".PLANETS." WRITE;
 				   UPDATE ".PLANETS." SET ".implode(", ", $planetQuery)." WHERE id = ".$fleetStartPlanetID.";
 				   INSERT INTO ".FLEETS." SET
 				   fleet_owner              = ".$fleetStartOwner.",
 				   fleet_target_owner       = ".$fleetTargetOwner.",
+				   fleet_ally  				= ".$TargetPlanetAllyid['ally_id'].",
+				   fleet_ally_owner			= ".$OwnerPlanetAllyid['ally_id'].",
 				   fleet_mission            = ".$fleetMission.",
 				   fleet_amount             = ".$fleetShipCount.",
 				   fleet_array              = '".implode(';',$fleetData)."',
@@ -411,6 +417,8 @@ class FleetFunctions
 				   fleet_id                 = @fleetID, 
 				   fleet_owner              = ".$fleetStartOwner.",
 				   fleet_target_owner       = ".$fleetTargetOwner.",
+				   fleet_ally  				= ".$TargetPlanetAllyid['ally_id'].",
+				   fleet_ally_owner			= ".$OwnerPlanetAllyid['ally_id'].",
 				   fleet_mission            = ".$fleetMission.",
 				   fleet_amount             = ".$fleetShipCount.",
 				   fleet_array              = '".implode(',',$fleetData)."',

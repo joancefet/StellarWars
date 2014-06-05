@@ -481,3 +481,23 @@ $LNG['af_from']								= 'por';
 $LNG['af_re']								= 'RE:';
 $LNG['af_error_no_subject']					= 'Precisas de por um título!!';
 $LNG['af_msgtime']							= 'Mensagem enviada em';
+
+//----------------------------------------------------------------------------//
+//----------------------------------------------------------------------------//
+//---------------	Frotas em voo	------------------------//
+$LNG['ff_name']					= "Trefego da Aliança";
+$LNG['ff_fleetid']				= "ID";
+$LNG['ff_mission']				= "Missão";
+$LNG['ff_starttime']			= "Começo";
+$LNG['ff_ships']				= "Naves";
+$LNG['ff_startuser']			= "Atacante";
+$LNG['ff_startplanet']			= "Planeta A.";
+$LNG['ff_arrivaltime']			= "Hora do Combate";
+$LNG['ff_targetuser']			= "Defensor";
+$LNG['ff_targetplanet']			= "Planeta D.";
+$LNG['ff_endtime']				= "Tempo de fim";
+$LNG['ff_holdtime']				= "Tempo parado";
+$LNG['ff_del']					= "Remover";
+$LNG['ff_lock']					= "Bloquear";
+$LNG['ff_unlock']				= "Desbloquear";
+$LNG['ff_no_fleets']			= "Não está presente qualquer frota";
